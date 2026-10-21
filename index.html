@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff8ec">
+  <title>Rank That! 🎯</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" id="homeBtn">
+      <span class="brand-icon">🎯</span>
+      <span>Rank That!<small>How well do you know them?</small></span>
+    </a>
+    <span class="top-tag">FRIENDS • RANK • REVEAL</span>
+  </header>
+
+  <main class="container">
+    <section id="setupScreen" class="screen">
+      <div class="hero">
+        <span class="eyebrow">YOUR FRIENDS. YOUR GUESSES. YOUR SCORE.</span>
+        <h1>Think you know<br><span class="rainbow">your friends?</span></h1>
+        <p>Guess their secret rankings. Get the positions right. Prove who knows them best!</p>
+        <div class="hero-art" aria-hidden="true">
+          <span>🥇</span><span>🤔</span><span>🥈</span><span>😂</span><span>🥉</span>
+        </div>
+      </div>
+
+      <div class="panel setup-panel">
+        <div class="section-heading">
+          <span class="step-bubble">1</span>
+          <div><h2>Who's playing?</h2><p>Add everyone. The more friends, the more chaos.</p></div>
+        </div>
+
+        <form id="playerForm" class="add-player-form">
+          <input id="playerName" type="text" maxlength="30"
+            placeholder="Enter a player's name..." autocomplete="off" required>
+          <button class="btn btn-primary" type="submit">+ Add</button>
+        </form>
+        <div id="playerList" class="player-list"></div>
+        <p class="helper">You need at least 3 players. There is no fixed player limit.</p>
+
+        <div class="divider"></div>
+        <div class="section-heading">
+          <span class="step-bubble yellow">2</span>
+          <div><h2>Set up the game</h2><p>Choose how long your competition lasts.</p></div>
+        </div>
+
+        <label class="field-label" for="roundCount">Number of rounds</label>
+        <input id="roundCount" type="number" min="1" max="100"
+          value="10" placeholder="e.g. 10">
+
+        <div class="info-card">
+          <span>🎲</span>
+          <div><strong>Every round is a new mystery</strong>
+            <p>Pick a Ranker, select a category and mode, then everyone else predicts their order.</p>
+          </div>
+        </div>
+        <button id="startGameBtn" class="btn btn-primary btn-large full-width">
+          Let's Play! 🚀
+        </button>
+      </div>
+    </section>
+
+    <section id="roundScreen" class="screen hidden">
+      <div class="game-heading">
+        <div><span class="eyebrow">THE NEXT MYSTERY</span><h1>Set the stage 🎬</h1></div>
+        <div class="round-pill" id="roundPill">ROUND 1</div>
+      </div>
+
+      <div class="panel">
+        <div class="section-heading">
+          <span class="step-bubble">1</span>
+          <div><h2>Choose the Ranker</h2>
+            <p>Whose mind is everyone trying to read this round?</p>
+          </div>
+        </div>
+        <label class="field-label" for="rankerSelect">Select a player</label>
+        <select id="rankerSelect"></select>
+
+        <div class="two-fields">
+          <div>
+            <label class="field-label" for="categorySelect">Category</label>
+            <select id="categorySelect">
+              <option value="Random">🎲 Surprise me!</option>
+              <option value="Funny">😂 Funny</option>
+              <option value="College">🎓 College</option>
+              <option value="Movies">🎬 Movies</option>
+              <option value="Anime">⚔️ Anime</option>
+              <option value="Food">🍕 Food</option>
+              <option value="Friendship">🫶 Friendship</option>
+              <option value="Savage">🔥 Savage</option>
+              <option value="Everyday">🌈 Everyday</option>
+              <option value="Chaos">🤯 Chaos</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="modeSelect">Ranking mode</label>
+            <select id="modeSelect">
+              <option value="Random">🎲 Random mode</option>
+              <option value="Personal">❤️ Personal favourites</option>
+              <option value="General">🏆 Best to worst</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <span>🔒</span>
+          <div><strong>Keep the secret!</strong>
+            <p>The Ranker submits their order privately. Every other player predicts independently.</p>
+          </div>
+        </div>
+        <button id="beginRoundBtn" class="btn btn-primary btn-large full-width">
+          Start This Round →
+        </button>
+        <button id="backToSetupBtn" class="btn btn-quiet full-width">End game and return to setup</button>
+      </div>
+
+      <div class="panel mini-leaderboard">
+        <h2>🏆 Current leaderboard</h2>
+        <div id="roundLeaderboard"></div>
+      </div>
+    </section>
+
+    <section id="playScreen" class="screen hidden">
+      <div class="play-topline">
+        <span class="round-pill" id="playRoundPill">ROUND 1</span>
+        <span class="category-pill" id="playCategory">😂 Funny</span>
+      </div>
+
+      <div class="question-card">
+        <div id="modeEmoji" class="question-emoji">❤️</div>
+        <span id="modeLabel" class="eyebrow">PERSONAL FAVOURITES</span>
+        <h1 id="questionTitle">Rank these items</h1>
+        <p id="questionText">Arrange all five items in the order you think is right.</p>
+      </div>
+
+      <div id="turnCard" class="turn-card"></div>
+
+      <div id="rankingArea" class="panel ranking-panel hidden">
+        <div class="ranking-instructions">
+          <div><h2>Your ranking</h2><p>Use the arrows to move items into your chosen order.</p></div>
+          <span class="drag-hint">↑ ↓</span>
+        </div>
+        <div id="rankingList" class="ranking-list"></div>
+        <div class="privacy-note">🔒 Your order stays hidden until the reveal.</div>
+        <button id="submitRankingBtn" class="btn btn-primary btn-large full-width">Lock In My Ranking 🔐</button>
+      </div>
+
+      <div id="handoffCard" class="panel handoff-card hidden">
+        <div class="handoff-emoji">📱</div>
+        <h2 id="handoffTitle">Pass the phone!</h2>
+        <p id="handoffText">Make sure the next player cannot see the previous answer.</p>
+        <button id="readyBtn" class="btn btn-primary btn-large full-width">I'm ready!</button>
+      </div>
+    </section>
+
+    <section id="revealScreen" class="screen hidden">
+      <div class="reveal-hero">
+        <span class="eyebrow">THE TRUTH IS OUT 🎉</span>
+        <h1>Who knows them best?</h1>
+        <p id="revealSubtitle"></p>
+      </div>
+      <div class="panel">
+        <h2>👑 The Ranker's actual order</h2>
+        <div id="actualRanking" class="ranking-list actual-list"></div>
+      </div>
+      <div class="panel">
+        <h2>📊 Prediction results</h2>
+        <p class="helper">One point for every exact position. A perfect prediction earns 3 bonus points!</p>
+        <div id="predictionResults" class="results-list"></div>
+      </div>
+      <div class="panel mini-leaderboard">
+        <h2>🏆 Overall leaderboard</h2>
+        <div id="revealLeaderboard"></div>
+      </div>
+      <button id="nextRoundBtn" class="btn btn-primary btn-large full-width">Next Round →</button>
+    </section>
+
+    <section id="finalScreen" class="screen hidden">
+      <div class="final-hero">
+        <div class="confetti-emoji">🎉🏆🎉</div>
+        <span class="eyebrow">GAME COMPLETE</span>
+        <h1>And the champion is...</h1>
+        <div id="championBox" class="champion-box"></div>
+        <p>Thanks for playing Rank That!</p>
+      </div>
+      <div class="panel">
+        <h2>🏆 Final leaderboard</h2>
+        <div id="finalLeaderboard"></div>
+      </div>
+      <div class="panel">
+        <h2>🧠 Who knows each Ranker best?</h2>
+        <p class="helper">These scores show how well each player predicted each Ranker's choices.</p>
+        <div id="rankerStats" class="results-list"></div>
+      </div>
+      <button id="playAgainBtn" class="btn btn-primary btn-large full-width">Play Again 🔁</button>
+      <button id="newGameBtn" class="btn btn-secondary full-width">New players / new game</button>
+    </section>
+  </main>
+
+  <footer>Made for friends who think they know each other. 💛</footer>
+</body>
+</html>
