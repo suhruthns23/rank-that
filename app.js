@@ -1,51 +1,136 @@
 
 const $ = (id) => document.getElementById(id);
 
+
 const BANK = {
-  Funny: [
-    { title: "Ridiculous everyday habits", items: ["Talking to yourself", "Sleeping all day", "Dancing alone", "Taking 100 selfies", "Laughing at your own jokes"] },
-    { title: "Funny superpowers", items: ["Flying but only 1 metre high", "Reading pets' minds", "Turning invisible when sneezing", "Teleporting into the wrong room", "Stopping time for 5 seconds"] },
-    { title: "Embarrassing situations", items: ["Calling a teacher 'Mum'", "Waving at a stranger", "Falling in public", "Sending a message to the wrong chat", "Forgetting someone's name"] }
+  "Sports & Cricket": [
+    { title: "Favourite Indian cricketers", items: ["Virat Kohli", "MS Dhoni", "Rohit Sharma", "Jasprit Bumrah", "Sachin Tendulkar"] },
+    { title: "Best cricket shots", items: ["Cover drive", "Pull shot", "Straight drive", "Helicopter shot", "Reverse sweep"] },
+    { title: "Favourite IPL teams", items: ["Chennai Super Kings", "Royal Challengers Bengaluru", "Mumbai Indians", "Kolkata Knight Riders", "Sunrisers Hyderabad"] },
+    { title: "Best cricket roles", items: ["Opening batter", "Middle-order batter", "Fast bowler", "Spinner", "All-rounder"] },
+    { title: "Favourite sports", items: ["Cricket", "Football", "Badminton", "Basketball", "Volleyball"] },
+    { title: "Best cricket moments", items: ["Winning a World Cup", "Last-ball victory", "Hat-trick", "Century under pressure", "Super Over win"] },
+    { title: "Sports to try", items: ["Go-karting", "Swimming", "Badminton", "Football", "Skating"] },
+    { title: "Favourite football stars", items: ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Sunil Chhetri"] },
+    { title: "Best ways to watch cricket", items: ["At the stadium", "With friends", "With family", "At a sports bar", "Alone with snacks"] },
+    { title: "Cricket match situations", items: ["Chasing 10 runs in the last over", "Taking a hat-trick", "Scoring a century", "Saving a match with a catch", "Winning on the final ball"] }
   ],
-  College: [
-    { title: "College experiences", items: ["Cancelled class", "Free attendance", "Surprise holiday", "Easy exam", "Cancelled assignment"] },
-    { title: "College survival skills", items: ["Getting notes from friends", "Finding an empty classroom", "Finishing work at the last minute", "Sleeping through lectures", "Convincing a teacher"] },
-    { title: "College day disasters", items: ["Forgetting an assignment", "Missing the bus", "A surprise test", "A dead phone battery", "Being late for a presentation"] }
+
+  "Movies & Actors": [
+    { title: "Favourite movie genres", items: ["Action", "Comedy", "Thriller", "Horror", "Romance"] },
+    { title: "Popular Kannada stars", items: ["Dr. Shivarajkumar", "Yash", "Puneeth Rajkumar", "Sudeep", "Darshan"] },
+    { title: "Popular Indian actors", items: ["Shah Rukh Khan", "Allu Arjun", "Prabhas", "Ranbir Kapoor", "Vijay"] },
+    { title: "Movie night essentials", items: ["Popcorn", "Chips", "Cold drink", "Blanket", "Good company"] },
+    { title: "Best movie villains", items: ["Joker", "Thanos", "Gabbar Singh", "Mogambo", "Kattappa"] },
+    { title: "Favourite movie experiences", items: ["First-day-first-show", "Watching at home", "Late-night movie", "Rewatching a favourite", "Watching with friends"] },
+    { title: "Best movie features", items: ["Story", "Acting", "Comedy", "Action scenes", "Background music"] },
+    { title: "Movie plot twists", items: ["Secret identity revealed", "Villain was a friend", "Unexpected betrayal", "Fake death reveal", "Time-loop reveal"] },
+    { title: "Best cinema snacks", items: ["Popcorn", "Nachos", "Samosa", "French fries", "Chocolate"] },
+    { title: "Dream movie roles", items: ["Superhero", "Detective", "Villain", "Secret agent", "Comedy lead"] }
   ],
-  Movies: [
-    { title: "Movie night essentials", items: ["Action scenes", "Comedy", "Plot twists", "Romance", "A satisfying ending"] },
-    { title: "Movie characters", items: ["The hero", "The villain", "The comic relief", "The genius", "The mysterious stranger"] },
-    { title: "Movie genres", items: ["Thriller", "Comedy", "Horror", "Science fiction", "Fantasy"] }
+
+  "Anime & Series": [
+    { title: "Favourite anime", items: ["Attack on Titan", "Death Note", "Demon Slayer", "Jujutsu Kaisen", "One Punch Man"] },
+    { title: "Anime superpowers", items: ["Time control", "Teleportation", "Super strength", "Mind reading", "Healing"] },
+    { title: "Favourite anime characters", items: ["L", "Levi Ackerman", "Gojo Satoru", "Saitama", "Tanjiro Kamado"] },
+    { title: "Best anime genres", items: ["Psychological thriller", "Action", "Fantasy", "Comedy", "Mystery"] },
+    { title: "Best fictional detectives", items: ["L", "Sherlock Holmes", "Batman", "Conan Edogawa", "Hercule Poirot"] },
+    { title: "Best fictional worlds", items: ["Naruto's world", "One Piece's world", "Attack on Titan's world", "Pokémon's world", "Dragon Ball's world"] },
+    { title: "Best anime abilities", items: ["Sharingan", "Domain Expansion", "Bankai", "Breathing Styles", "One For All"] },
+    { title: "Best series experiences", items: ["Binge-watching", "Weekly episodes", "Watching with friends", "Rewatching classics", "Avoiding spoilers"] },
+    { title: "What makes an anime great", items: ["Story twists", "Character development", "Fight scenes", "Soundtrack", "Emotional moments"] },
+    { title: "Anime character roles", items: ["Main hero", "Rival", "Mentor", "Strategist", "Overpowered villain"] }
   ],
-  Anime: [
-    { title: "Anime powers", items: ["Super strength", "Time manipulation", "Teleportation", "Mind reading", "Healing powers"] },
-    { title: "Anime character traits", items: ["Intelligence", "Raw strength", "Speed", "Loyalty", "Strategic thinking"] },
-    { title: "Anime viewing experiences", items: ["A shocking plot twist", "An epic fight", "A clever villain", "An emotional backstory", "An amazing opening"] }
+
+  "Free Time & Hobbies": [
+    { title: "Things to do in free time", items: ["Watch movies", "Play video games", "Listen to music", "Go out with friends", "Sleep"] },
+    { title: "Favourite indoor activities", items: ["Gaming", "Reading", "Watching shows", "Board games", "Cooking"] },
+    { title: "Favourite outdoor activities", items: ["Cricket", "Cycling", "Badminton", "Walking", "Football"] },
+    { title: "Hobbies to learn", items: ["Photography", "Guitar", "Drawing", "Cooking", "Video editing"] },
+    { title: "Ideal weekend plans", items: ["Movie marathon", "Road trip", "Gaming session", "Cafe visit", "Staying in bed"] },
+    { title: "Best ways to relax", items: ["Listening to music", "Taking a nap", "Going for a walk", "Watching comedy", "Talking to a friend"] },
+    { title: "Best creative hobbies", items: ["Drawing", "Photography", "Writing stories", "Making videos", "Playing an instrument"] },
+    { title: "Things to do on a holiday", items: ["Visit a new place", "Meet friends", "Play games", "Watch movies", "Sleep all day"] },
+    { title: "Skills worth learning", items: ["Public speaking", "Coding", "Cooking", "Driving", "Photography"] },
+    { title: "Best ways to spend one free hour", items: ["Take a power nap", "Watch an episode", "Play a quick game", "Call a friend", "Go for a walk"] }
   ],
-  Food: [
-    { title: "Food cravings", items: ["Pizza", "Ice cream", "Dosa", "Burger", "Chocolate"] },
-    { title: "Food superpowers", items: ["Never feeling full", "Cooking anything perfectly", "Eating without gaining weight", "Making food appear", "Knowing every recipe"] },
-    { title: "Snack situations", items: ["Midnight cravings", "Movie snacks", "Street food", "A homemade meal", "Free food at an event"] }
+
+  "Food & Drinks": [
+    { title: "Favourite South Indian foods", items: ["Masala dosa", "Idli sambar", "Mysore masala dosa", "Bisi bele bath", "Pongal"] },
+    { title: "Favourite fast foods", items: ["Pizza", "Burger", "French fries", "Sandwich", "Tacos"] },
+    { title: "Best Indian snacks", items: ["Samosa", "Pani puri", "Bhel puri", "Pakoda", "Vada pav"] },
+    { title: "Favourite desserts", items: ["Ice cream", "Gulab jamun", "Brownie", "Rasmalai", "Cake"] },
+    { title: "Best drinks", items: ["Cold coffee", "Lemon soda", "Mango juice", "Milkshake", "Masala chai"] },
+    { title: "Best breakfast foods", items: ["Dosa", "Idli", "Poori", "Paratha", "Bread toast"] },
+    { title: "Favourite pizza toppings", items: ["Extra cheese", "Mushrooms", "Sweet corn", "Olives", "Jalapeños"] },
+    { title: "Best ice cream flavours", items: ["Chocolate", "Vanilla", "Mango", "Butterscotch", "Strawberry"] },
+    { title: "Foods to eat every day", items: ["Dosa", "Pizza", "Fried rice", "Sandwich", "Ice cream"] },
+    { title: "Ideal food delivery", items: ["South Indian meal", "Pizza combo", "Burger combo", "Biryani", "Dessert box"] }
   ],
-  Friendship: [
-    { title: "Friendship qualities", items: ["Honesty", "Loyalty", "Humour", "Giving good advice", "Being available anytime"] },
-    { title: "Friend group roles", items: ["The planner", "The comedian", "The overthinker", "The quiet observer", "The troublemaker"] },
-    { title: "Friendship moments", items: ["Late-night conversations", "Inside jokes", "Spontaneous trips", "Helping during hard times", "Celebrating small wins"] }
+
+  "College & Student Life": [
+    { title: "Favourite college subjects", items: ["Mathematics", "Computer Science", "Physics", "English", "Social Studies"] },
+    { title: "Best college moments", items: ["Cultural fest", "Lunch with friends", "Class trips", "Free periods", "Finishing exams"] },
+    { title: "Things to do in a free period", items: ["Chat with friends", "Play games", "Listen to music", "Eat snacks", "Take a nap"] },
+    { title: "Student survival essentials", items: ["Phone", "Charger", "Water bottle", "Headphones", "Snacks"] },
+    { title: "Biggest student struggles", items: ["Early mornings", "Assignments", "Exams", "Attendance", "Group projects"] },
+    { title: "Best places on campus", items: ["Canteen", "Library", "Playground", "Classroom", "Campus garden"] },
+    { title: "Best group project roles", items: ["Team leader", "Researcher", "Presenter", "Designer", "Last-minute finisher"] },
+    { title: "Exam preparation styles", items: ["Study weeks ahead", "Study one day before", "Group study", "Video tutorials", "Pray and improvise"] },
+    { title: "Most useful college skills", items: ["Time management", "Communication", "Coding", "Presentation skills", "Teamwork"] },
+    { title: "Things that make college fun", items: ["Good friends", "Funny lecturers", "Cultural events", "Canteen food", "Unexpected holidays"] }
   ],
-  Savage: [
-    { title: "Awkward social situations", items: ["Being left on read", "A painfully quiet group chat", "An accidental screenshot", "A failed joke", "A brutally honest friend"] },
-    { title: "Uncomfortable truths", items: ["Admitting you're wrong", "Apologising first", "Hearing honest feedback", "Being ignored", "Losing an argument"] },
-    { title: "Social challenges", items: ["No phone for a week", "No social media for a month", "Always saying what you think", "Never being able to lie", "Everyone hearing your inner monologue"] }
+
+  "Friendship & Social Life": [
+    { title: "Best qualities in a friend", items: ["Loyalty", "Honesty", "Humour", "Kindness", "Reliability"] },
+    { title: "Best group hangouts", items: ["Movie theatre", "Cafe", "Gaming centre", "Road trip", "Someone's home"] },
+    { title: "Ideal best-friend activities", items: ["Deep conversations", "Gaming together", "Trying food", "Travelling", "Sharing memes"] },
+    { title: "Best gifts for friends", items: ["Personalised gift", "Favourite snacks", "Hoodie", "Photo album", "Surprise outing"] },
+    { title: "Friend-group roles", items: ["The comedian", "The planner", "The foodie", "The sleepy one", "The photographer"] },
+    { title: "Best friendship memories", items: ["First meeting", "Inside jokes", "Classroom chaos", "Trips together", "Late-night talks"] },
+    { title: "Ways to cheer up a friend", items: ["Make them laugh", "Listen to them", "Bring snacks", "Take them out", "Send funny videos"] },
+    { title: "Best qualities for a hangout", items: ["Good food", "Good music", "Funny conversations", "Games", "No awkward silence"] },
+    { title: "Things friends can do together", items: ["Play sports", "Watch a movie", "Cook food", "Explore a new place", "Have a game night"] },
+    { title: "Best ways to stay connected", items: ["Daily messages", "Phone calls", "Group chats", "Gaming online", "Meeting in person"] }
   ],
-  Everyday: [
-    { title: "Everyday comforts", items: ["A long sleep", "A hot shower", "A favourite song", "A day off", "A delicious meal"] },
-    { title: "Things to save", items: ["Photos", "Messages", "Music playlists", "Important documents", "Funny memories"] },
-    { title: "Ideal free time", items: ["Watching a series", "Going outdoors", "Playing games", "Meeting friends", "Doing absolutely nothing"] }
+
+  "Everyday Preferences": [
+    { title: "Favourite times of day", items: ["Early morning", "Late morning", "Afternoon", "Evening", "Midnight"] },
+    { title: "Favourite weather", items: ["Rainy", "Cold and cloudy", "Sunny", "Windy", "Thunderstorms"] },
+    { title: "Best days of the week", items: ["Monday", "Wednesday", "Friday", "Saturday", "Sunday"] },
+    { title: "Favourite seasons or weather moods", items: ["Monsoon", "Winter", "Summer", "Spring", "Autumn"] },
+    { title: "Best transport options", items: ["Motorbike", "Car", "Metro", "Bus", "Bicycle"] },
+    { title: "Dream travel destinations", items: ["Japan", "Switzerland", "Goa", "Dubai", "Manali"] },
+    { title: "Favourite places to hang out", items: ["Cafe", "Shopping mall", "Park", "Beach", "Gaming zone"] },
+    { title: "Things that improve your mood", items: ["Music", "Food", "Sleep", "Friends", "A good movie"] },
+    { title: "Everyday comforts", items: ["A comfortable bed", "Fast Wi-Fi", "Air conditioning", "Favourite food", "Peace and quiet"] },
+    { title: "Things you would save first", items: ["Phone", "Wallet", "Family photos", "Laptop", "Favourite keepsake"] }
   ],
-  Chaos: [
-    { title: "Wild trade-offs", items: ["Unlimited money but no holidays", "Dream job but no weekends", "Fame but no privacy", "Perfect memory but no sleep", "Travel anywhere but alone"] },
-    { title: "Strange life upgrades", items: ["Pause button for life", "Undo one mistake a day", "Know every language", "Talk to animals", "See 10 minutes into the future"] },
-    { title: "Pure chaos", items: ["Every thought appears as subtitles", "Every entrance has theme music", "You must sing instead of speak", "Your life has a laugh track", "Your dreams are livestreamed"] }
+
+  "Tech & Internet": [
+    { title: "Favourite social platforms", items: ["YouTube", "Instagram", "WhatsApp", "Reddit", "Snapchat"] },
+    { title: "Most useful apps", items: ["Google Maps", "WhatsApp", "YouTube", "Spotify", "Google Keep"] },
+    { title: "Favourite types of games", items: ["Battle royale", "Racing", "Football", "Puzzle", "Open-world adventure"] },
+    { title: "Dream gadgets", items: ["Gaming laptop", "Flagship phone", "Smartwatch", "Wireless headphones", "VR headset"] },
+    { title: "Best things about smartphones", items: ["Camera", "Battery life", "Gaming performance", "Display", "Fast charging"] },
+    { title: "Best internet content", items: ["Comedy videos", "Gaming videos", "Educational videos", "Movie reviews", "Travel vlogs"] },
+    { title: "Tech skills to master", items: ["Web development", "Video editing", "Cybersecurity", "AI tools", "App development"] },
+    { title: "Ideal gaming setup", items: ["Gaming PC", "Gaming laptop", "Console", "Large monitor", "Comfortable gaming chair"] },
+    { title: "Best ways to use AI", items: ["Learning", "Coding help", "Creative writing", "Image creation", "Planning tasks"] },
+    { title: "Things you would buy with ₹1 crore", items: ["Dream house", "Luxury car", "Travel around the world", "Start a business", "Invest most of it"] }
+  ],
+
+  "Funny & Hypothetical": [
+    { title: "Best superpowers", items: ["Teleportation", "Time control", "Invisibility", "Mind reading", "Flying"] },
+    { title: "Most useful impossible skills", items: ["Never needing sleep", "Learning instantly", "Talking to animals", "Pausing time", "Knowing every language"] },
+    { title: "Worst everyday annoyances", items: ["Slow internet", "Low phone battery", "Traffic jams", "Mosquitoes at night", "Forgetting why you entered a room"] },
+    { title: "Best ways to become famous", items: ["Become a movie star", "Become a top athlete", "Create viral videos", "Invent something", "Become a famous musician"] },
+    { title: "Things to do if invisible for a day", items: ["Explore secret places", "Pull harmless pranks", "Attend a concert unnoticed", "Avoid awkward situations", "Observe the world quietly"] },
+    { title: "Best time-travel choices", items: ["Visit the past", "See the future", "Meet historical figures", "Watch your childhood again", "See life 100 years from now"] },
+    { title: "Strange life upgrades", items: ["Unlimited snacks", "Perfect memory", "Never lose anything", "Instant travel", "Always find parking"] },
+    { title: "Funny dream jobs", items: ["Professional nap tester", "Food taster", "Theme-park reviewer", "Meme creator", "Video game tester"] },
+    { title: "Things to do with a free million", items: ["Travel the world", "Buy a dream home", "Help family and friends", "Start a business", "Build a gaming room"] },
+    { title: "Choose your weird advantage", items: ["Always win rock-paper-scissors", "Never get stuck in traffic", "Always find the remote", "Never forget a name", "Always pick the fastest queue"] }
   ]
 };
 
